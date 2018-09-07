@@ -1,0 +1,174 @@
+name: company
+description: Managing Company type of objects
+
+classes:
+  address:
+    - name: description
+      type: string
+    - name: addressCountry
+      type: string
+    - name: addressLocality
+      type: string
+    - name: addressRegion
+      type: string
+    - name: postOfficeBoxNumber
+      type: string
+    - name: postalCode
+      type: string
+    - name: streetAddress
+      type: string
+    - name: telephone
+      type: string
+  company:
+    - name: legalName
+      type: string
+    - name: description
+      type: string
+    - name: email
+      type: string
+    - name: taxID
+      type: string
+    - name: duns
+      type: string
+    - name: logo
+      type: file
+    - name: address
+      type: reference
+      target: address
+    # - name: vatID
+    #   type: string
+
+
+endpoints:
+  add:
+    description: Add Company
+    inputs:
+      required:
+        - legalName
+      properties:
+        legalName:
+          type: string
+          description: The official name of the organization, e.g. the registered company name.
+        logo:
+          type: string
+          description: An associated logo.
+        taxID:
+          type: string
+          description: The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+        duns:
+          type: string
+          description: The Dun & Bradstreet DUNS number for identifying an organization or business person.
+        email:
+          format: email
+          type: string
+          description: Email address.
+        address:
+          required:
+            - addressCountry
+            - addressLocality
+            - streetAddress
+            - postalCode
+          properties:
+            addressCountry:
+              type: string
+              description: The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
+            addressLocality:
+              type: string
+              description: The locality. For example, Mountain View.
+            addressRegion:
+              type: string
+              description: The region. For example, CA.
+            postalCode:
+              type: string
+              description: The postal code. For example, 94043.
+            postOfficeBoxNumber:
+              type: string
+              description: The post office box number for PO box addresses.
+            streetAddress:
+              type: string
+              description: The street address. For example, 1600 Amphitheatre Pkwy.
+    outputs:
+      success:
+        exit_code: 204
+        description: Company added succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
+
+  update:
+    description: Update Company
+    inputs:
+      properties:
+        id:
+          description: Company object ID
+        legalName:
+          type: string
+          description: The official name of the organization, e.g. the registered company name.
+        logo:
+          type: string
+          description: An associated logo.
+        taxID:
+          type: string
+          description: The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+        duns:
+          type: string
+          description: The Dun & Bradstreet DUNS number for identifying an organization or business person.
+        email:
+          format: email
+          type: string
+          description: Email address.
+        address:
+          required:
+            - addressCountry
+            - addressLocality
+            - streetAddress
+            - postalCode
+          properties:
+            addressCountry:
+              type: string
+              description: The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
+            addressLocality:
+              type: string
+              description: The locality. For example, Mountain View.
+            addressRegion:
+              type: string
+              description: The region. For example, CA.
+            postalCode:
+              type: string
+              description: The postal code. For example, 94043.
+            postOfficeBoxNumber:
+              type: string
+              description: The post office box number for PO box addresses.
+            streetAddress:
+              type: string
+              description: The street address. For example, 1600 Amphitheatre Pkwy.
+    outputs:
+      success:
+        exit_code: 204
+        description: Company updated succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
+
+  delete:
+    description: Add Company
+    inputs:
+      properties:
+        id:
+          description: Company object ID
+    outputs:
+      success:
+        exit_code: 204
+        description: Company deleted succesfully
+      fail:
+        description: Fail
+        properties:
+          message:
+            description: Fail message
+            type: string
