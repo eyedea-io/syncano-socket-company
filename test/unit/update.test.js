@@ -9,9 +9,6 @@ describe('update', function () {
     require('@syncano/core').__setMocks({
       data: {
         company: {
-          find: jest.fn().mockImplementationOnce(() => {
-            return Promise.resolve({id: 123, address: 345})
-          }),
           update: jest.fn().mockImplementationOnce(() => {
             return Promise.resolve()
           })
@@ -21,7 +18,6 @@ describe('update', function () {
 
     // Generate fake args
     const fakeArgs = await getFakeData('update', {optionalsProbability: 0})
-    delete fakeArgs.address
 
     const result = await run('update', {args: fakeArgs})
     expect(result).toHaveProperty('code', 204)
@@ -32,18 +28,8 @@ describe('update', function () {
     require('@syncano/core').__setMocks({
       data: {
         company: {
-          find: jest.fn().mockImplementationOnce(() => {
-            return Promise.resolve({id: 123, address: 345})
-          }),
           update: jest.fn().mockImplementationOnce(() => {
             return Promise.resolve()
-          })
-        },
-        address: {
-          update: jest.fn().mockImplementationOnce(() => {
-            return Promise.resolve({
-              id: 123
-            })
           })
         }
       }

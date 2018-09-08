@@ -10,21 +10,10 @@ class Endpoint extends S.Endpoint {
     {response, data}: S.Core,
     {args}: S.Context<Args>
   ) {
-    const company = await data.company.find(args.id)
+    const params = Object.assign({}, args)
+    delete params.id
 
-    let addressId = null
-    if (args.address) {
-      addressId = await data.address.update(company.address, args.address)
-    }
-
-    const companyProperties = Object.assign({}, args)
-    delete companyProperties.address
-    if (addressId) {
-      companyProperties.address = addressId
-    }
-    delete companyProperties.address
-
-    const updatedCompany = await data.company.update(companyProperties)
+    const updatedCompany = await data.company.update(args.id)
     response.json(updatedCompany, 204)
   }
 }

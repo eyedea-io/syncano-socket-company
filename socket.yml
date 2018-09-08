@@ -2,23 +2,6 @@ name: company
 description: Managing Company type of objects
 
 classes:
-  address:
-    - name: description
-      type: string
-    - name: addressCountry
-      type: string
-    - name: addressLocality
-      type: string
-    - name: addressRegion
-      type: string
-    - name: postOfficeBoxNumber
-      type: string
-    - name: postalCode
-      type: string
-    - name: streetAddress
-      type: string
-    - name: telephone
-      type: string
   company:
     - name: legalName
       type: string
@@ -38,9 +21,9 @@ classes:
     # - name: vatID
     #   type: string
 
-
 endpoints:
   add:
+    private: true
     description: Add Company
     inputs:
       required:
@@ -62,31 +45,6 @@ endpoints:
           format: email
           type: string
           description: Email address.
-        address:
-          required:
-            - addressCountry
-            - addressLocality
-            - streetAddress
-            - postalCode
-          properties:
-            addressCountry:
-              type: string
-              description: The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
-            addressLocality:
-              type: string
-              description: The locality. For example, Mountain View.
-            addressRegion:
-              type: string
-              description: The region. For example, CA.
-            postalCode:
-              type: string
-              description: The postal code. For example, 94043.
-            postOfficeBoxNumber:
-              type: string
-              description: The post office box number for PO box addresses.
-            streetAddress:
-              type: string
-              description: The street address. For example, 1600 Amphitheatre Pkwy.
     outputs:
       success:
         exit_code: 204
@@ -99,6 +57,7 @@ endpoints:
             type: string
 
   update:
+    private: true
     description: Update Company
     inputs:
       properties:
@@ -120,31 +79,6 @@ endpoints:
           format: email
           type: string
           description: Email address.
-        address:
-          required:
-            - addressCountry
-            - addressLocality
-            - streetAddress
-            - postalCode
-          properties:
-            addressCountry:
-              type: string
-              description: The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
-            addressLocality:
-              type: string
-              description: The locality. For example, Mountain View.
-            addressRegion:
-              type: string
-              description: The region. For example, CA.
-            postalCode:
-              type: string
-              description: The postal code. For example, 94043.
-            postOfficeBoxNumber:
-              type: string
-              description: The post office box number for PO box addresses.
-            streetAddress:
-              type: string
-              description: The street address. For example, 1600 Amphitheatre Pkwy.
     outputs:
       success:
         exit_code: 204
@@ -157,6 +91,7 @@ endpoints:
             type: string
 
   delete:
+    private: true
     description: Add Company
     inputs:
       properties:

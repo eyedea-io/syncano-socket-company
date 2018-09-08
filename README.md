@@ -1,4 +1,4 @@
-# Syncano Socket for storing Company data
+# Syncano Socket for storing Company type of data
 
 [![Syncano Socket](https://img.shields.io/badge/syncano-socket-blue.svg)](https://syncano.io)
 [![CircleCI branch](https://img.shields.io/circleci/project/github/eyedea-io/syncano-socket-company/master.svg)](https://circleci.com/gh/eyedea-io/syncano-socket-company/tree/master)

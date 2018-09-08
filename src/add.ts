@@ -8,20 +8,7 @@ class Endpoint extends S.Endpoint {
     {response, data}: S.Core,
     {args}: S.Context<Args>
   ) {
-    let addressId = null
-    if (args.address) {
-      addressId = await data.address.create(args.address)
-    }
-
-    const companyProperties = Object.assign({}, args)
-    delete companyProperties.address
-    if (addressId) {
-      companyProperties.address = addressId
-    }
-
-    delete companyProperties.address
-
-    await data.company.create(companyProperties)
+    await data.company.create(args)
     response.json({}, 204)
   }
 }

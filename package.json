@@ -1,7 +1,7 @@
 {
   "name": "@eyedea-sockets/company",
   "version": "0.0.1",
-  "description": "Syncano Socket for storing Company data",
+  "description": "Syncano Socket for storing Company type of data",
   "repository": "https://github.com/eyedea-io/syncano-socket-company.git",
   "public": true,
   "author": "Eyedea <hello@eyedea.io> https://eyedea.io",
@@ -9,6 +9,8 @@
   "keywords": [
     "syncano",
     "socket",
+    "serverless",
+    "schema.org",
     "company"
   ],
   "peerDependencies": {
