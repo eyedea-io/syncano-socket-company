@@ -15,11 +15,6 @@ classes:
       type: string
     - name: logo
       type: file
-    - name: address
-      type: reference
-      target: address
-    # - name: vatID
-    #   type: string
 
 endpoints:
   add:
